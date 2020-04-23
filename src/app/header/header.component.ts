@@ -7,14 +7,14 @@ import { Component, Output, EventEmitter } from '@angular/core';
 
 export class HeaderComponent{
 
-	@Output() clicked = new EventEmitter<{recipeVisible: boolean, shoppingVisible: boolean}>();
+	// @Output() clicked = new EventEmitter<{recipeVisible: boolean, shoppingVisible: boolean}>();
 
-	onRecipeClicked(){
-		this.clicked.emit({ recipeVisible:true, shoppingVisible:false });
-	}
+	// onRecipeClicked(){
+	// 	this.clicked.emit({ recipeVisible:true, shoppingVisible:false });
+	// }
 
-	onShoppingClicked(){
-		this.clicked.emit({ recipeVisible:false, shoppingVisible:true });
-	}
+	// onShoppingClicked(){
+	// 	this.clicked.emit({ recipeVisible:false, shoppingVisible:true });
+	// }
 
 }
