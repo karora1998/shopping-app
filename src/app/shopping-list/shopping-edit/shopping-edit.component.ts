@@ -13,10 +13,11 @@ import { ShoppingListService } from '../shopping-list.service';
 export class ShoppingEditComponent implements OnInit, OnDestroy {
   // @ViewChild('nameInput', { static:false }) nameInput: ElementRef;
   // @ViewChild('amountInput', { static:false }) amountInput: ElementRef; 
-  @ViewChild('f', {static: true}) form: NgForm;
+  @ViewChild('f', {static: false}) form: NgForm;
   subscription: Subscription;
   editMode = false;
   editedItemIndex: number;
+  editedItem: Ingredient;
 
   constructor(private shoppingListService: ShoppingListService) { }
 
@@ -25,6 +26,11 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
       (index: number) => {
         this.editMode = true;
         this.editedItemIndex = index;
+        this.editedItem = this.shoppingListService.getIngredient(index);
+        this.form.setValue({
+          name: this.editedItem.name,
+          amount: this.editedItem.amount
+        });
       }
     );
   }
