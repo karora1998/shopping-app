@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 
 interface AuthResponseData {
 	kind: string,
@@ -19,6 +21,8 @@ export class AuthService {
 			email: email, 
 			password: password,
 			returnSecureToken: true
-		});
+		}).pipe(catchError(errorRes => {
+			return throwError(errorRes.error.error.message);
+		}));
 	}
 }
