@@ -47,4 +47,8 @@ export class AuthComponent {
 
 		form.reset();
 	}
+
+	onHenadleError() {
+		this.error = null;
+	}
 }
